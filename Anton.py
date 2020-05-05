@@ -11,10 +11,8 @@ class Board:
         background = ImageTk.PhotoImage(Image.open("cow.jpg"))
         #ImageTk.PhotoImage(Image.open("grass.jpg"))  
         #l=Label(image=img)
-#l.pack()        
-        self.buttons = [[tk.Button(root, image = background,
-                                   width=8,
-                                   height=4,
+        #l.pack()        
+        self.buttons = [[tk.Button(root, image = background, width=8, height=4,
                                    command=lambda row=row, column=column: self.choose_tile(row, column)
                                    ) for column in range(4)] for row in range(4)]
         
@@ -27,11 +25,11 @@ class Board:
 
 class Cards:
     def __init__(self):
-        pairs = 0
-        img_folder = "" #mappen som våra bilder ligger i
-        data_path= os.path.join(img.folder, "*g")
-        files = glob.glob(data_path)
-        cow_pics = []
+        self.pairs = 0
+        self.img_folder = "" #mappen som våra bilder ligger i
+        self.data_path = os.path.join(img.folder, "*g")
+        self.files = glob.glob(data_path)
+        self.cow_pics = []
         for image in files:
             img = cv2.imread(image)
             for i in range(1):
@@ -76,18 +74,12 @@ class Cards:
 
     def count_pairs(self, x1, y1, x2, y2):
         if (self.buttons[x1][y1]) == (self.buttons[x2][y2]):
-            pairs += 1
-        if pairs == 8:
+            self.pairs += 1
+        if self.pairs == 8:
+            #OBS behöver fixa = hur det ska se ut när man vunnit
             
 
 root = tk.Tk()
 memory_tile = MemoryTile(root)
-root.mainloop(    )
-        
-    #def place_buttons(self):
-        #self.buttons = (Tkinter.Button(memory, image("sarah ansikte"), command=()))
-        #for row in range(4):
-            #for column in range(4):
-                #self.buttons[row][column].grid(row=row, column=column)
-        #self.first = None
-        #self.draw_board()        
+root.mainloop()
+       
