@@ -59,7 +59,7 @@ class Cards:
             self.buttons[row][column]
         else:
             a,b = self.first
-            #blockera nya knapptryck innan korten vänts
+            #OBS behöver fixa = blockera nya knapptryck innan korten vänts
             if self.answer[row][column] == self.answer[a][b]:
                 self.buttons[a][b].config(state=tk.Disabled)
                 self.count_pairs(row, column, a, b)
