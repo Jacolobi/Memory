@@ -54,7 +54,7 @@ class Cards:
         self.buttons[row][column].config(state=tk.DISABLED)
         if not self.first:
             self.first = (row, column)
-            self.buttons[row][column]
+            self.buttons[row][column] #vad gör denna?
         else:
             a,b = self.first
             #OBS behöver fixa = blockera nya knapptryck innan korten vänts
@@ -62,7 +62,7 @@ class Cards:
                 self.buttons[a][b].config(state=tk.Disabled)
                 self.count_pairs(row, column, a, b)
             else:
-                self.parent.after(1000, self.hide_tiles, row, column, a, b)
+                self.parent.after(1000, self.hide_cards, row, column, a, b)
             self.first = None
     
     
@@ -76,10 +76,9 @@ class Cards:
         if (self.buttons[x1][y1]) == (self.buttons[x2][y2]):
             self.pairs += 1
         if self.pairs == 8:
-            #OBS behöver fixa = hur det ska se ut när man vunnit
+            messagebox.showinfo("Cow Moomery", "Congratulations You Have Won!")
             
 
 root = tk.Tk()
 memory_tile = MemoryTile(root)
 root.mainloop()
-       
