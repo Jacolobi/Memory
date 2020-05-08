@@ -2,6 +2,10 @@
 # May be used in the course Applikationsprogrammering i Python at Umeå University.
 # Usage exept those listed above requires permission by the author.
 
+"""
+Purpose is to create a GUI memory game.
+"""
+
 from tkinter import *
 from PIL import ImageTk, Image
 import random
