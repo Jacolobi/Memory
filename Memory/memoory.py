@@ -1,14 +1,11 @@
 from tkinter import *
-import os
-import glob
 from PIL import ImageTk, Image
 import random
-from time import time
 
 class game:
     def __init__(self, master):
         self.master = master
-        master.title("Moomery")
+        master.title("Moomory")
         master.iconbitmap("cow-1.ico")
         self.pairs = 0
         self.img_dict = {}
