@@ -8,7 +8,8 @@ from time import time
 class game:
     def __init__(self, master):
         self.master = master
-        master.title("Memoory")
+        master.title("Moomery")
+        master.iconbitmap("cow-1.ico")
         self.pairs = 0
         self.img_dict = {}
         self.img_keys = []
