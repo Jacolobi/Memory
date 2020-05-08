@@ -1,9 +1,19 @@
+# Written by Jacob Andersson <jaan0078@umu.se>, Anton Bonli <anbo0205@umu.se>, Madeleine Englund <maen0191@ad.umu.se> & Sarah Lorenzo <salo0038@umu.se> .
+# May be used in the course Applikationsprogrammering i Python at Umeå University.
+# Usage exept those listed above requires permission by the author.
+
 from tkinter import *
 from PIL import ImageTk, Image
 import random
 
 class game:
     def __init__(self, master):
+        """
+             Purpose: Creates the game board and stores all the images in a dictionary with a specifik key.
+             Parameters: - 
+             Returns: - 
+             Comment: 
+        """
         self.master = master
         master.title("Moomory")
         master.iconbitmap("cow-1.ico")
@@ -27,6 +37,12 @@ class game:
         
         
     def flipped_card(self, card):
+        """
+             Purpose: Compare cards when two are flipped.
+             Parameters: card - the card that the user clicked.
+             Returns: - 
+             Comment:  If cards match they stay flipped, otherwise they flip back.
+        """
         self.flipped_cards.append(card)
         self.flipped_keys.append(card.key)
         if self.flipped == 0:
@@ -45,6 +61,13 @@ class game:
         
 class card:
     def __init__(self,master, row, column):
+        """
+             Purpose: Creates the buttons and assign pictures to each button.
+             Parameters: row - row in game.
+                                  column - column in game.
+             Returns: - 
+             Comment: -
+        """        
         self.master = master
         self.row = row
         self.column = column
@@ -55,10 +78,22 @@ class card:
         self.button.grid(row=row, column=column)
 
     def flip(self):
+        """
+             Purpose: Flips the card that the user clicked.
+             Parameters: -
+             Returns: - 
+             Comment: 
+        """        
         self.button.config(image = self.img, state = DISABLED)
         game.flipped_card(self)
         
     def turn_back(self):
+        """
+             Purpose: Flip back cards if no match.
+             Parameters: -
+             Returns: - 
+             Comment: 
+        """                
         self.button.config(image = self.back, state = NORMAL)
         
 root = Tk()
