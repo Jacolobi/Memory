@@ -7,6 +7,7 @@ Purpose is to create a GUI memory game.
 """
 
 from tkinter import *
+from tkinter import messagebox
 from PIL import ImageTk, Image
 import random
 
@@ -53,39 +54,27 @@ class game:
             self.flipped = 1
         elif self.flipped_keys[0] %8 == self.flipped_keys[1] %8:
             self.pairs +=1
-            if self.count_pairs() == True:
-                self.win()
             self.flipped = 0
             self.flipped_cards.clear()
             self.flipped_keys.clear()
+            if self.pairs == 8:
+                return self.win()
         else:
             for card in cards:
                 card.button.config(state = DISABLED)
             self.master.after(1000, self.flipBackAll)
             
-    def flipBackAll(self): 
-        """
-             Purpose: Flips back both cards if no match
-             Parameters: 
-             Returns: - 
-             Comment:  
-        """        
+    def flipBackAll(self): #sätter vi normal här? for card in self.flipped.cards?
         for card in self.flipped_cards:
             card.turn_back()
         self.flipped = 0
         self.flipped_cards.clear()
         self.flipped_keys.clear()
         for card in cards:
-            card.button.config(state = NORMAL)          
-        
-    def count_pairs(self):
-        if self.pairs == 8:
-            return True
-        else:
-            return False
-        
+            card.button.config(state = NORMAL)
+            
     def win(self):
-        tkinter.messagebox.showinfo(title = none, message = "You Have Won!")
+        messagebox.showinfo(title = "none", message = "You Have Won!")        
         
 class card:
     def __init__(self,master, row, column):
@@ -112,17 +101,17 @@ class card:
              Returns: - 
              Comment: -
         """        
-        self.button.config(image = self.img, state = DISABLED)
-        game.flipped_card(self)
+        self.button.config(image = self.img, state = DISABLED) #Hur gör vi alla disabled? Och hur gör vi dessa sen normal?
+        return game.flipped_card(self)
         
     def turn_back(self):
         """
-             Purpose: Flips back card 
+             Purpose: Flip back cards if no match.
              Parameters: -
              Returns: - 
              Comment: -
         """                
-        self.button.config(image = self.back, state = NORMAL)
+        self.button.config(image = self.back)
         
 root = Tk()
 root.geometry("616x616")
