@@ -57,6 +57,8 @@ class game:
             self.flipped_cards.clear()
             self.flipped_keys.clear()
         else:
+            for card in cards:
+                card.button.config(state = DISABLED)
             self.master.after(1000, self.flipBackAll)
             
     def flipBackAll(self): #sätter vi normal här? for card in self.flipped.cards?
@@ -65,6 +67,8 @@ class game:
         self.flipped = 0
         self.flipped_cards.clear()
         self.flipped_keys.clear()
+        for card in cards:
+            card.button.config(state = NORMAL)        
         
 class card:
     def __init__(self,master, row, column):
@@ -101,7 +105,7 @@ class card:
              Returns: - 
              Comment: -
         """                
-        self.button.config(image = self.back, state = NORMAL)
+        self.button.config(image = self.back)
         
 root = Tk()
 root.geometry("616x616")
