@@ -64,7 +64,13 @@ class game:
                 card.button.config(state = DISABLED)
             self.master.after(1000, self.flip_back_all)
             
-    def flip_back_all(self): #sätter vi normal här? for card in self.flipped.cards?
+    def flip_back_all(self):
+        """
+             Purpose: Calls on turn_back to flip cards back if no match.
+             Parameters: -
+             Returns: - 
+             Comment: -
+        """                        
         for card in self.flipped_cards:
             card.turn_back()
         self.flipped = 0
@@ -74,7 +80,13 @@ class game:
             card.button.config(state = NORMAL)
             
     def win(self):
-        messagebox.showinfo(title = "none", message = "You Have Won!")        
+        """
+             Purpose: Message box pops up when all pairs are found.
+             Parameters: -
+             Returns: - 
+             Comment: -
+        """                        
+        messagebox.showinfo(title = "Congratulations", message = "You Have Won!")        
         
 class card:
     def __init__(self,master, row, column):
@@ -101,12 +113,12 @@ class card:
              Returns: - 
              Comment: -
         """        
-        self.button.config(image = self.img, state = DISABLED) #Hur gör vi alla disabled? Och hur gör vi dessa sen normal?
+        self.button.config(image = self.img, state = DISABLED)
         return game.flipped_card(self)
         
     def turn_back(self):
         """
-             Purpose: Flip back cards if no match.
+             Purpose: Flips back card.
              Parameters: -
              Returns: - 
              Comment: -
