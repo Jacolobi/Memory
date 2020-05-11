@@ -16,7 +16,7 @@ class game:
              Purpose: Creates the game board and stores all the images in a dictionary with a specifik key.
              Parameters: - 
              Returns: - 
-             Comment: 
+             Comment: -
         """
         self.master = master
         master.title("Moomory")
@@ -57,11 +57,14 @@ class game:
             self.flipped_cards.clear()
             self.flipped_keys.clear()
         else:
-            for card in self.flipped_cards:
-                card.turn_back()
-            self.flipped = 0
-            self.flipped_cards.clear()
-            self.flipped_keys.clear()
+            self.master.after(1000, self.flipBackAll)
+            
+    def flipBackAll(self): #sätter vi normal här? for card in self.flipped.cards?
+        for card in self.flipped_cards:
+            card.turn_back()
+        self.flipped = 0
+        self.flipped_cards.clear()
+        self.flipped_keys.clear()
         
 class card:
     def __init__(self,master, row, column):
@@ -86,9 +89,9 @@ class card:
              Purpose: Flips the card that the user clicked.
              Parameters: -
              Returns: - 
-             Comment: 
+             Comment: -
         """        
-        self.button.config(image = self.img, state = DISABLED)
+        self.button.config(image = self.img, state = DISABLED) #Hur gör vi alla disabled? Och hur gör vi dessa sen normal?
         game.flipped_card(self)
         
     def turn_back(self):
@@ -96,7 +99,7 @@ class card:
              Purpose: Flip back cards if no match.
              Parameters: -
              Returns: - 
-             Comment: 
+             Comment: -
         """                
         self.button.config(image = self.back, state = NORMAL)
         
