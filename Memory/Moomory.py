@@ -21,7 +21,6 @@ class game:
         """
         self.master = master
         master.title("Moomory")
-        master.iconbitmap("cow-1.ico")
         self.pairs = 0
         self.img_dict = {}
         self.img_keys = []
