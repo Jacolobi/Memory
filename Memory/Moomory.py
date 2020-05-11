@@ -58,13 +58,13 @@ class game:
             self.flipped_cards.clear()
             self.flipped_keys.clear()
             if self.pairs == 8:
-                return self.win()
+                self.master.after(100, self.win)
         else:
             for card in cards:
                 card.button.config(state = DISABLED)
-            self.master.after(1000, self.flipBackAll)
+            self.master.after(1000, self.flip_back_all)
             
-    def flipBackAll(self): #sätter vi normal här? for card in self.flipped.cards?
+    def flip_back_all(self): #sätter vi normal här? for card in self.flipped.cards?
         for card in self.flipped_cards:
             card.turn_back()
         self.flipped = 0
