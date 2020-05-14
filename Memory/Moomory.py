@@ -14,7 +14,7 @@ import random
 class game:
     def __init__(self, master):
         """
-             Purpose: Creates the game board and stores all the images in a dictionary with a specifik key.
+             Purpose: Creates the game board and stores all the images in a dictionary with a specific key.
              Parameters: - 
              Returns: - 
              Comment: -
